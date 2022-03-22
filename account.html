@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACCOUNT PAGE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo.png" alt="125px"></a>
+            </div>
+            <nav>
+                <ul id="Menuitems">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="#Contact">Contact</a></li>
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </nav>
+            <a href="cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>    
+<!----------------account-page------------------->
+
+         <div class="account-page">
+             <div class="container">
+                 <div class="row">
+                     <div class="col-2">
+                         <img src="images/image1.png" width="100%">
+                     </div>
+
+                     <div class="col-2">
+                          <div class="form-container">
+                                <div class="form-btn">
+                                  <span onclick="login()">Login</span>
+                                  <span onclick="register()">Register</span>
+                                  
+                                  <hr id="Indicator">
+                                </div>
+
+                                <form id="LoginForm">
+                                  <input type="text" placeholder="Username">
+                                  <input type="Password" placeholder="Password">
+                                  <h4>Captcha</h4>
+                                  <canvas id="captcha">captcha text</canvas>
+                                  <input type="text" placeholder="Text"><br>
+                                  <button id="refreshButton" type="submit" class="BTN">REFRESH</button>
+                                  <button type="submit" class="btn">LOGIN</button><br>
+                                  <a href="">Forgot Password</a>
+                                </form>
+
+                                <form id="RegForm">
+                                <input type="text" placeholder="Username">
+                                <input type="E-mail" placeholder="E-mail"><br>
+                                <button type="submit" class="btn">REGISTER</button>
+                                </form>
+
+                                    
+
+                          </div>
+                    </div>
+
+                 </div>
+             </div>
+         </div>
+
+<!----------------footer------------------->
+
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download our App</h3>
+                <p>Download app for andriod and ios.</p>
+                <div class="app-logo">
+                    <a href="https://play.google.com/store"><img src="images/play-store.png"></a>
+                    <a href="https://www.apple.com/in/store"><img src="images/app-store.png"></a>
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <a href="index.html"><img src="images/logo-white.png"></a>
+                <p>Our purpose is to sustainably make the pleasure and benefits of sports accessible to the many.</p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Usefull Links</h3>
+                <ul>
+                    <li>Coupons</li>
+                    <li>Blog Post</li>
+                    <li>Return Policy</li>
+                    <li>Join Affiliate</li>
+                </ul> 
+            </div>
+            <div class="footer-col-4">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>Youtube</li>
+                    <li>Instagram</li>
+                </ul> 
+            </div>
+            <div id="Contact" class="footer-col-5">
+                <h3>Contact</h3>
+                <ul>
+                    <li>9999999999</li>
+                    <li>9999999998</li>
+                </ul> 
+            </div>
+        </div>
+    </div>
+</div>
+<!----------------js for toggle menu------------------->
+<script>
+    var Menuitems = document.getElementById("Menuitems")
+    Menuitems.style.maxHeight = "0px"
+    function menutoggle(){
+        if(Menuitems.style.maxHeight == "0px")
+              {
+                Menuitems.style.maxHeight = "200px"
+              }
+        else
+              {
+                Menuitems.style.maxHeight = "0px"
+              }      
+}
+</script>
+
+<!----------------js for toggle form------------------->
+
+<script>
+    var LoginForm = document.getElementById("LoginForm")
+    var RegForm = document.getElementById("RegForm")
+    var Indicator = document.getElementById("Indicator")
+
+        function register(){
+            RegForm.style.transform = "translateX(0px)";
+            LoginForm.style.transform = "translateX(0px)";
+            Indicator.style.transform = "translateX(100px)";
+         } 
+        
+         function login(){
+            RegForm.style.transform = "translateX(300px)";
+            LoginForm.style.transform = "translateX(300px)";
+            Indicator.style.transform = "translateX(0px)";
+         } 
+</script>
+
+
+<!----------------js for captcha------------------->
+
+<script>
+    // document.querySelector() is used to select an element from the document using its ID
+let captchaText = document.querySelector('#captcha');
+var ctx = captchaText.getContext("2d");
+ctx.font = "30px Roboto";
+ctx.fillStyle = "#08e5ff";
+
+let userText = document.querySelector('#textBox');
+let submitButton = document.querySelector('#submitButton');
+let output = document.querySelector('#output');
+let refreshButton = document.querySelector('#refreshButton');
+
+// alphaNums contains the characters with which you want to create the CAPTCHA
+let alphaNums = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+let emptyArr = [];
+// This loop generates a random string of 7 characters using alphaNums
+// Further this string is displayed as a CAPTCHA
+for (let i = 1; i <= 7; i++) {
+ emptyArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
+}
+var c = emptyArr.join('');
+ctx.fillText(emptyArr.join(''),captchaText.width/4, captchaText.height/2);
+
+// This event listener is stimulated whenever the user press the "Enter" button
+// "Correct!" or "Incorrect, please try again" message is
+// displayed after validating the input text with CAPTCHA
+userText.addEventListener('keyup', function(e) {
+ // Key Code Value of "Enter" Button is 13
+ if (e.keyCode === 13) {
+ if (userText.value === c) {
+ output.classList.add("correctCaptcha");
+ output.innerHTML = "Correct!";
+ } else {
+ output.classList.add("incorrectCaptcha");
+ output.innerHTML = "Incorrect, please try again";
+ }
+ }
+});
+// This event listener is stimulated whenever the user clicks the "Submit" button
+// "Correct!" or "Incorrect, please try again" message is
+// displayed after validating the input text with CAPTCHA
+submitButton.addEventListener('click', function() {
+ if (userText.value === c) {
+ output.classList.add("correctCaptcha");
+ output.innerHTML = "Correct!";
+ } else {
+ output.classList.add("incorrectCaptcha");
+ output.innerHTML = "Incorrect, please try again";
+ }
+});
+// This event listener is stimulated whenever the user press the "Refresh" button
+// A new random CAPTCHA is generated and displayed after the user clicks the "Refresh" button
+refreshButton.addEventListener('click', function() {
+ userText.value = "";
+ let refreshArr = [];
+ for (let j = 1; j <= 7; j++) {
+ refreshArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
+ }
+ ctx.clearRect(0, 0, captchaText.width, captchaText.height);
+ c = refreshArr.join('');
+ ctx.fillText(refreshArr.join(''),captchaText.width/4, captchaText.height/2);
+ output.innerHTML = "";
+});
+</script>
+
+
+</body>
+</html>
